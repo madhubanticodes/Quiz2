@@ -35,6 +35,7 @@ class Employee(models.Model):
     department = models.ForeignKey('departments.Department', on_delete=models.CASCADE)
     date_joined= models.DateField()
     salary     = models.DecimalField(max_digits=10, decimal_places=2)
+    is_remote = models.BooleanField(default=False)
 
 class Attendance(models.Model):
     employee  = models.ForeignKey(Employee, on_delete=models.CASCADE)
@@ -61,3 +62,5 @@ class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = '__all__'
+
+
