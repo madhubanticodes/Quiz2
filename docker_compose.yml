@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: employees
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    depends_on:
+      - db
+  [oai_citation_attribution:1‡testdriven.io](https://testdriven.io/blog/django-charts/?utm_source=chatgpt.com)  
+
+### `README.md`  
+markdown
+## Employee Analytics API
+
+### Setup (without Docker)
+1. Copy .env.example→.env, fill values.
+2. python3 -m venv venv && source venv/bin/activate
+3. pip install -r requirements.txt
+4. python manage.py migrate
+5. python manage.py generate_employees
+6. python manage.py runserver
+7. Open http://127.0.0.1:8000/swagger/
+
+### Setup (with Docker)
+```bash
+docker-compose up --build
